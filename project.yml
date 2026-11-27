@@ -1,0 +1,40 @@
+name: KeyFlow
+options:
+  bundleIdPrefix: com.turjo
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGNING_ALLOWED: "NO"
+    CODE_SIGNING_REQUIRED: "NO"
+    CODE_SIGN_IDENTITY: ""
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  KeyFlow:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Common
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.turjo.keyflow
+        INFOPLIST_FILE: Config/App-Info.plist
+    dependencies:
+      - target: KeyFlowKeyboard
+        embed: true
+  KeyFlowKeyboard:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Keyboard
+      - Common
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.turjo.keyflow.keyboard
+        INFOPLIST_FILE: Config/Keyboard-Info.plist
+        APPLICATION_EXTENSION_API_ONLY: "YES"
+        SKIP_INSTALL: "YES"
